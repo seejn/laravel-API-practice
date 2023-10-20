@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+	$data = Array(
+		"name"=>"seejn",
+		"addr"=>"Kathmandu",	
+	);
     	$response = Array(
+		"data"=>$data,
 		"message"=> "API call success",
 	);
 	return response() -> json($response);
