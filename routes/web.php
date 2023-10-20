@@ -15,8 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 	$data = Array(
-		"name"=>"seejn",
-		"addr"=>"Kathmandu",	
+		[
+			"name"=>"seejn",
+			"addr"=>"Kathmandu",	
+		],
+		[
+			"name"=>"hari",
+			"addr"=>"Kathmandu",	
+		],
 	);
     	$response = Array(
 		"data"=>$data,
