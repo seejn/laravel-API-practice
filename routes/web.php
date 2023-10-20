@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	$data = Array(
-		[
-			"name"=>"seejn",
-			"addr"=>"Kathmandu",	
-		],
-		[
-			"name"=>"hari",
-			"addr"=>"Kathmandu",	
-		],
-	);
     	$response = Array(
-		"data"=>$data,
-		"message"=> "API call success",
+		"message"=> "Welcome to seejn101maharjan's APIs",
 	);
 	return response() -> json($response);
 });
+
+Route::get('/users', function(){
+	return User::all();
+});
+Route::get('/user/{id}', function($id){
+	return User::find($id);
+});
+Route::get('/deleteuser/{id}',[UserController::class, 'delete']);
+
+Route::get('/createuser',[UserController::class, 'create']);
