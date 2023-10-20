@@ -27,7 +27,12 @@ Route::get('/users', function(){
 	return User::all();
 });
 Route::get('/user/{id}', function($id){
-	return User::find($id);
+	return response() -> json(
+		User::find($id)
+		?
+		:
+		["message"=>"No User Found"]
+	);		
 });
 Route::get('/deleteuser/{id}',[UserController::class, 'delete']);
 
